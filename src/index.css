@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-ora-navy: #102c51;
+  --color-ora-dark: #091f39;
+  --color-ora-darkest: #071d37;
+  --color-ora-teal: #21a8b9;
+  --color-ora-teal-dark: #147d8c;
+  --color-ora-cyan: #5ddade;
+  --color-ora-muted: #627581;
+  --color-ora-light-border: #d5e1e5;
+  --color-ora-dark-border: #345069;
+  --color-ora-subtext: #b9ccd7;
+  --color-ora-bg-light: #eff6f7;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: #102c51;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
