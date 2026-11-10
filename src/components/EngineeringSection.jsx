@@ -73,7 +73,7 @@ export default function EngineeringSection() {
               data-node-id="7:4521"
               data-name="Water surface"
             >
-              <img src="/assets/water-surface.svg" alt="" className="w-full h-full block" />
+              <img src="./assets/water-surface.svg" alt="" className="w-full h-full block" />
             </div>
 
             {/* Basin Text Label */}
@@ -101,7 +101,7 @@ export default function EngineeringSection() {
               data-name="Circulation network"
             >
               <img
-                src="/assets/circulation-network.svg"
+                src="./assets/circulation-network.svg"
                 alt="Hydraulic piping network"
                 className="w-full h-full object-fill block"
               />
@@ -118,12 +118,12 @@ export default function EngineeringSection() {
               data-node-id="7:4524"
               data-name="Circulation pump"
             >
-              <img src="/assets/circulation-pump.svg" alt="Circulation pump" className="w-full h-full" />
+              <img src="./assets/circulation-pump.svg" alt="Circulation pump" className="w-full h-full" />
               <div
                 className="absolute inset-0 flex items-center justify-center animate-spin"
                 style={{ animationDuration: '6s' }}
               >
-                <img src="/assets/pump-impeller.svg" alt="" className="w-[20px] h-[24px]" />
+                <img src="./assets/pump-impeller.svg" alt="" className="w-[20px] h-[24px]" />
               </div>
             </div>
 
@@ -138,7 +138,7 @@ export default function EngineeringSection() {
               data-node-id="7:4526"
               data-name="Filtration vessel"
             >
-              <img src="/assets/media-bed.svg" alt="Media bed" className="w-[38px] h-[18px]" />
+              <img src="./assets/media-bed.svg" alt="Media bed" className="w-[38px] h-[18px]" />
             </div>
 
             {/* UV Treatment Unit */}

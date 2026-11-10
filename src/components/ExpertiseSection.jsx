@@ -5,10 +5,10 @@ export default function ExpertiseSection({ onSelectExpertise }) {
   const { t } = useLanguage();
 
   const capabilityImages = [
-    '/assets/capability-swimming-pools.png',
-    '/assets/capability-lagoons.png',
-    '/assets/capability-fountains.png',
-    '/assets/capability-aqua-parks.png',
+    './assets/capability-swimming-pools.png',
+    './assets/capability-lagoons.png',
+    './assets/capability-fountains.png',
+    './assets/capability-aqua-parks.png',
   ];
 
   return (

@@ -36,7 +36,7 @@ export default function Header({ onOpenConsultation }) {
       {/* Brand Logo / Wordmark */}
       <a href="#" className="relative shrink-0 block h-[70px] w-[140px] md:h-[80px] md:w-[160px] overflow-hidden" data-node-id="31:4">
         <img
-          src="/assets/ora-wordmark.png"
+          src="./assets/ora-wordmark.png"
           alt="ORA Water Features"
           className="absolute h-[240%] left-[-10.8%] max-w-none top-[-74.7%] w-[120.5%] object-contain"
         />

@@ -22,7 +22,7 @@ export default function Hero({ onOpenConsultation }) {
         data-name="Architectural lagoon illustration"
       >
         <img
-          src="/assets/architectural-lagoon.png"
+          src="./assets/architectural-lagoon.png"
           alt="Architectural water landscape by ORA"
           className="w-full h-full object-cover pointer-events-none scale-105"
         />

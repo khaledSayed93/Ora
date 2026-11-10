@@ -14,7 +14,7 @@ export default function SplashScreen({ onEnter }) {
       {/* Background imagery and scrim */}
       <div className="absolute inset-0 pointer-events-none" data-node-id="20:4">
         <img
-          src="/assets/architectural-lagoon.png"
+          src="./assets/architectural-lagoon.png"
           alt="ORA Water Landscape"
           className="w-full h-full object-cover scale-105"
         />
@@ -48,7 +48,7 @@ export default function SplashScreen({ onEnter }) {
         {/* Wordmark */}
         <div className="h-[90px] w-[220px] sm:h-[120px] sm:w-[280px] relative overflow-hidden" data-node-id="20:13">
           <img
-            src="/assets/ora-wordmark.png"
+            src="./assets/ora-wordmark.png"
             alt="ORA"
             className="absolute h-[240%] left-[-10.8%] max-w-none top-[-74.7%] w-[120.5%] object-contain"
           />

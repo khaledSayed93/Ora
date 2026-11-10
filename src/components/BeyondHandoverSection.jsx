@@ -17,7 +17,7 @@ export default function BeyondHandoverSection({ onOpenConsultation }) {
         data-name="Water detail"
       >
         <img
-          src="/assets/pool-edge.png"
+          src="./assets/pool-edge.png"
           alt="Water detail at pool edge"
           className="absolute inset-0 w-full h-full object-cover"
           data-node-id="7:4610"

@@ -39,7 +39,7 @@ export default function Footer({ onOpenSplash }) {
             data-node-id="7:4727"
           >
             <img
-              src="/assets/ora-logo.png"
+              src="./assets/ora-logo.png"
               alt="ORA Logo"
               className="absolute h-[240%] left-[-10.8%] max-w-none top-[-74.7%] w-[120.5%] object-contain"
               data-node-id="31:5"

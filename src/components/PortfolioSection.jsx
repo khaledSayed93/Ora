@@ -5,10 +5,10 @@ export default function PortfolioSection({ onOpenProject, onOpenConsultation }) 
   const { t, isRTL } = useLanguage();
 
   const projectImages = [
-    '/assets/project-seashell-playa.png',
-    '/assets/project-creek-town.png',
-    '/assets/project-oud-wellness.png',
-    '/assets/project-my-otel.png',
+    './assets/project-seashell-playa.png',
+    './assets/project-creek-town.png',
+    './assets/project-oud-wellness.png',
+    './assets/project-my-otel.png',
   ];
 
   return (
