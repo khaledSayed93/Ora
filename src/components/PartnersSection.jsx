@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function PartnersSection() {
+  const { t } = useLanguage();
+
   const developers = [
     { name: 'Mountain View', nodeId: '7:4639' },
     { name: 'IL CAZAR', nodeId: '7:4640' },
@@ -43,15 +46,15 @@ export default function PartnersSection() {
             className="font-sans font-semibold text-[#147d8c] text-[11px] tracking-[0.16em]"
             data-node-id="7:4635"
           >
-            08 / A COLLABORATIVE DISCIPLINE
+            {t.partners.sectionLabel}
           </p>
         </div>
 
         <p
-          className="font-sans text-[#627581] text-[13px] leading-[1.6] max-w-[640px]"
+          className="font-sans text-[#627581] text-[13px] leading-[1.7] max-w-[640px]"
           data-node-id="7:4636"
         >
-          Developers, consultants and partners represented in the founding team’s experience.
+          {t.partners.desc}
         </p>
       </div>
 
@@ -65,6 +68,7 @@ export default function PartnersSection() {
       {/* Row 1: Developers */}
       <div
         className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 items-center text-[#102c51] font-sans font-medium text-[16px] md:text-[17px]"
+        style={{ direction: 'ltr' }}
         data-node-id="7:4638"
         data-name="Developer names"
       >
@@ -82,6 +86,7 @@ export default function PartnersSection() {
       {/* Row 2: Consultants */}
       <div
         className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 items-center text-[#627581] font-sans text-[14px] md:text-[15px]"
+        style={{ direction: 'ltr' }}
         data-node-id="7:4644"
         data-name="Consultant names"
       >

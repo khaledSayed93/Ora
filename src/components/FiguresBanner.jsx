@@ -1,44 +1,8 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function FiguresBanner() {
-  const metrics = [
-    {
-      value: '12',
-      label: 'Featured projects',
-      detail: 'Across the team’s portfolio',
-      nodeId: '7:4318',
-      valueNodeId: '7:4319',
-      labelNodeId: '7:4320',
-      detailNodeId: '7:4321',
-    },
-    {
-      value: '35,000+',
-      label: 'm² water surface',
-      detail: 'Lagoons, creeks & fountains',
-      nodeId: '7:4322',
-      valueNodeId: '7:4323',
-      labelNodeId: '7:4324',
-      detailNodeId: '7:4325',
-    },
-    {
-      value: '90+',
-      label: 'Swimming pools',
-      detail: 'Resorts, residences & villas',
-      nodeId: '7:4326',
-      valueNodeId: '7:4327',
-      labelNodeId: '7:4328',
-      detailNodeId: '7:4329',
-    },
-    {
-      value: '3',
-      label: 'Countries',
-      detail: 'Egypt · Saudi Arabia · UAE',
-      nodeId: '7:4330',
-      valueNodeId: '7:4331',
-      labelNodeId: '7:4332',
-      detailNodeId: '7:4333',
-    },
-  ];
+  const { t } = useLanguage();
 
   return (
     <section
@@ -66,15 +30,15 @@ export default function FiguresBanner() {
             className="font-sans font-semibold text-[#5ddade] text-[11px] tracking-[0.16em]"
             data-node-id="7:4315"
           >
-            EXPERIENCE, BEFORE AND BEYOND ORA
+            {t.figures.sectionLabel}
           </p>
         </div>
 
         <p
-          className="font-sans text-[#b9ccd7] text-[13px] leading-[1.6] max-w-[650px]"
+          className="font-sans text-[#b9ccd7] text-[13px] leading-[1.7] max-w-[650px]"
           data-node-id="7:4316"
         >
-          Selected experience of ORA’s founding team across contracting, consultancy and developer-side roles.
+          {t.figures.intro}
         </p>
       </div>
 
@@ -84,29 +48,22 @@ export default function FiguresBanner() {
         data-node-id="7:4317"
         data-name="Key figures"
       >
-        {metrics.map((m) => (
+        {t.figures.metrics.map((m, idx) => (
           <div
-            key={m.label}
+            key={idx}
             className="flex flex-col gap-2.5"
-            data-node-id={m.nodeId}
             data-name="Experience metric"
           >
             <p
-              className="font-serif font-normal text-white text-[50px] sm:text-[60px] lg:text-[66px] leading-none"
-              data-node-id={m.valueNodeId}
+              className="font-serif font-normal text-white text-[46px] sm:text-[56px] lg:text-[64px] leading-none"
+              style={{ direction: 'ltr' }}
             >
               {m.value}
             </p>
-            <p
-              className="font-sans text-white text-[15px] font-normal"
-              data-node-id={m.labelNodeId}
-            >
+            <p className="font-sans text-white text-[15px] font-medium">
               {m.label}
             </p>
-            <p
-              className="font-sans text-[#b9ccd7] text-[12px] font-normal"
-              data-node-id={m.detailNodeId}
-            >
+            <p className="font-sans text-[#b9ccd7] text-[12px] font-normal">
               {m.detail}
             </p>
           </div>

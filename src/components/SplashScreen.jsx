@@ -1,6 +1,10 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function SplashScreen({ onEnter }) {
+  const { t, isRTL } = useLanguage();
+  const s = t.splash;
+
   return (
     <div
       className="fixed inset-0 z-50 bg-[#071d37] flex flex-col justify-between p-6 sm:p-12 lg:px-[72px] lg:py-[44px] overflow-hidden"
@@ -28,11 +32,11 @@ export default function SplashScreen({ onEnter }) {
         <div className="flex items-center gap-3" data-node-id="20:8">
           <div className="bg-[#21a8b9] h-[1px] w-[28px]" data-node-id="20:9" />
           <span className="font-semibold tracking-wider text-white" data-node-id="20:10">
-            ORA WATER FEATURES
+            {s.brandSignature}
           </span>
         </div>
         <p className="text-[#5ddade] tracking-widest font-medium uppercase" data-node-id="20:11">
-          DESIGN • BUILD • OPERATE
+          {s.philosophy}
         </p>
       </div>
 
@@ -55,17 +59,19 @@ export default function SplashScreen({ onEnter }) {
           className="font-serif text-white text-3xl sm:text-4xl md:text-5xl leading-tight"
           data-node-id="20:20"
         >
-          Water, shaped by engineering.
+          {s.brandPromise}
         </p>
 
         {/* Enter Website Action */}
         <button
           onClick={onEnter}
-          className="mt-4 bg-[#21a8b9] hover:bg-[#1da0b0] text-[#091f39] border border-[#21a8b9] h-[54px] px-8 flex items-center gap-6 text-[13px] font-semibold transition-all shadow-xl active:scale-[0.98] cursor-pointer"
+          className="mt-4 bg-[#21a8b9] hover:bg-[#1da0b0] text-[#091f39] border border-[#21a8b9] h-[54px] px-8 flex items-center gap-5 text-[13px] font-semibold transition-all shadow-xl active:scale-[0.98] cursor-pointer"
           data-node-id="20:22"
         >
-          <span data-node-id="20:23">Enter website</span>
-          <span className="text-[20px] leading-none" data-node-id="20:24">↗</span>
+          <span data-node-id="20:23">{s.enterWebsite}</span>
+          <span className="text-[20px] leading-none" data-node-id="20:24">
+            {isRTL ? '↖' : '↗'}
+          </span>
         </button>
       </div>
 
@@ -77,18 +83,15 @@ export default function SplashScreen({ onEnter }) {
         <div className="bg-[#b9ccd7]/30 h-[1px] w-full" data-node-id="20:26" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2" data-node-id="20:27">
           <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-white/90" data-node-id="20:28">
-            <span>Swimming Pools</span>
-            <span className="opacity-40">·</span>
-            <span>Lagoons</span>
-            <span className="opacity-40">·</span>
-            <span>Fountains</span>
-            <span className="opacity-40">·</span>
-            <span>Aqua Parks</span>
-            <span className="opacity-40">·</span>
-            <span>Water Engineering</span>
+            {s.expertiseList.map((item, idx) => (
+              <React.Fragment key={item}>
+                {idx > 0 && <span className="opacity-40">·</span>}
+                <span>{item}</span>
+              </React.Fragment>
+            ))}
           </div>
           <span className="text-[#b9ccd7]/70 text-[10px]" data-node-id="20:34">
-            Architectural imagery for illustration
+            {s.imageryNote}
           </span>
         </div>
       </div>

@@ -1,11 +1,8 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function BeyondHandoverSection({ onOpenConsultation }) {
-  const supportServices = [
-    { label: 'Preventive care', nodeId: '7:4619', dotNodeId: '7:4620', labelNodeId: '7:4621' },
-    { label: 'Water treatment', nodeId: '7:4622', dotNodeId: '7:4623', labelNodeId: '7:4624' },
-    { label: 'System upgrades', nodeId: '7:4625', dotNodeId: '7:4626', labelNodeId: '7:4627' },
-  ];
+  const { t, isRTL } = useLanguage();
 
   return (
     <section
@@ -27,10 +24,10 @@ export default function BeyondHandoverSection({ onOpenConsultation }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
         <p
-          className="relative z-10 font-sans text-white/90 text-[10px] tracking-wide"
+          className="relative z-10 font-sans text-white/90 text-[11px] tracking-wide"
           data-node-id="7:4611"
         >
-          Water detail · Illustrative imagery
+          {t.beyond.waterDetailTag}
         </p>
       </div>
 
@@ -55,26 +52,26 @@ export default function BeyondHandoverSection({ onOpenConsultation }) {
             className="font-sans font-semibold text-[#147d8c] text-[11px] tracking-[0.16em]"
             data-node-id="7:4615"
           >
-            07 / BEYOND HANDOVER
+            {t.beyond.sectionLabel}
           </p>
         </div>
 
         {/* Heading */}
         <h2
-          className="font-serif font-normal text-[#102c51] text-[40px] sm:text-[48px] lg:text-[57px] leading-[1.04]"
+          className="font-serif font-normal text-[#102c51] text-[36px] sm:text-[44px] lg:text-[52px] leading-[1.08]"
           data-node-id="7:4616"
         >
-          <span>Designed to work.</span>
+          <span>{t.beyond.titleLine1}</span>
           <br />
-          <span>Supported to last.</span>
+          <span>{t.beyond.titleLine2}</span>
         </h2>
 
         {/* Description */}
         <p
-          className="font-sans text-[#627581] text-[15px] sm:text-[16px] leading-[1.7] max-w-[616px]"
+          className="font-sans text-[#627581] text-[15px] sm:text-[16px] leading-[1.8] max-w-[616px]"
           data-node-id="7:4617"
         >
-          A water feature’s life begins at commissioning. ORA supports operating facilities with planned maintenance, water treatment and the right upgrades when systems need to evolve.
+          {t.beyond.desc}
         </p>
 
         {/* Indicators */}
@@ -83,20 +80,10 @@ export default function BeyondHandoverSection({ onOpenConsultation }) {
           data-node-id="7:4618"
           data-name="Aftercare scope"
         >
-          {supportServices.map((service) => (
-            <div
-              key={service.label}
-              className="flex items-center gap-2"
-              data-node-id={service.nodeId}
-            >
-              <div
-                className="bg-[#21a8b9] w-1.5 h-1.5 rounded-full"
-                data-node-id={service.dotNodeId}
-              />
-              <span
-                className="font-sans text-[#102c51] text-[11px] font-medium"
-                data-node-id={service.labelNodeId}
-              >
+          {t.beyond.indicators.map((service, idx) => (
+            <div key={idx} className="flex items-center gap-2">
+              <div className="bg-[#21a8b9] w-2 h-2 rounded-full" />
+              <span className="font-sans text-[#102c51] text-[12px] font-semibold">
                 {service.label}
               </span>
             </div>
@@ -106,13 +93,15 @@ export default function BeyondHandoverSection({ onOpenConsultation }) {
         {/* Action Button */}
         <div className="pt-2">
           <button
-            onClick={() => onOpenConsultation('Facility Aftercare Discussion')}
-            className="bg-transparent hover:bg-white/60 border border-[#d5e1e5] text-[#091f39] h-[54px] px-6 inline-flex items-center gap-6 text-[13px] font-semibold transition-all active:scale-[0.99] cursor-pointer"
+            onClick={() => onOpenConsultation(t.beyond.cta)}
+            className="bg-transparent hover:bg-white/60 border border-[#d5e1e5] text-[#091f39] h-[54px] px-6 inline-flex items-center gap-5 text-[13px] font-semibold transition-all active:scale-[0.99] cursor-pointer"
             data-node-id="7:4628"
             data-name="Consultation action"
           >
-            <span data-node-id="7:4629">Talk to us about your facility</span>
-            <span className="text-[#21a8b9] text-[20px] font-light" data-node-id="7:4630">↗</span>
+            <span data-node-id="7:4629">{t.beyond.cta}</span>
+            <span className="text-[#21a8b9] text-[20px] font-light">
+              {isRTL ? '↖' : '↗'}
+            </span>
           </button>
         </div>
       </div>

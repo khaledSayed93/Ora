@@ -1,78 +1,9 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function ServicesSection({ onOpenConsultation }) {
+  const { t, isRTL } = useLanguage();
   const [hoveredIdx, setHoveredIdx] = useState(null);
-
-  const services = [
-    {
-      number: '01',
-      name: 'Turnkey Contracting',
-      description: 'A complete delivery scope: equipment supply, installation, testing, commissioning and handover.',
-      scope: 'FROM APPROVED DESIGN TO OPERATION',
-      details: [
-        'End-to-end mechanical, electrical & civil coordination',
-        'Direct procurement of certified international equipment',
-        'Site supervision by dedicated hydraulic engineers',
-        'Comprehensive testing, balancing & operator training'
-      ],
-      nodeId: '7:4389',
-      numNodeId: '7:4392',
-      nameNodeId: '7:4394',
-      descNodeId: '7:4395',
-      scopeNodeId: '7:4396',
-    },
-    {
-      number: '02',
-      name: 'Design & Consultancy',
-      description: 'Concept development, detailed engineering and multidisciplinary coordination for developers, consultants and architects.',
-      scope: 'CONCEPT · DETAILED DESIGN · BIM / MEP',
-      details: [
-        '3D BIM modeling and clash detection with master structure',
-        'Hydraulic turnover and pump head loss calculations',
-        'Filtration, disinfection and water chemistry engineering',
-        'Tender drawings, specifications and comprehensive BOQs'
-      ],
-      nodeId: '7:4398',
-      numNodeId: '7:4401',
-      nameNodeId: '7:4403',
-      descNodeId: '7:4404',
-      scopeNodeId: '7:4405',
-    },
-    {
-      number: '03',
-      name: 'Operation & Maintenance',
-      description: 'Preventive and corrective maintenance, water treatment and chemical supply for operating facilities.',
-      scope: 'PLANNED CARE · WATER QUALITY · SUPPORT',
-      details: [
-        'Scheduled biological and chemical water testing',
-        'Preventive pump and filtration backwash service',
-        'Automation, sensor calibration and PLC checks',
-        'Emergency response and genuine spare parts inventory'
-      ],
-      nodeId: '7:4407',
-      numNodeId: '7:4410',
-      nameNodeId: '7:4412',
-      descNodeId: '7:4413',
-      scopeNodeId: '7:4414',
-    },
-    {
-      number: '04',
-      name: 'Renovation & Upgrading',
-      description: 'Equipment replacement and upgrades to filtration, treatment and controls for existing water features.',
-      scope: 'ASSESS · REPLACE · IMPROVE',
-      details: [
-        'Hydraulic diagnostic and energy consumption audits',
-        'Retrofitting energy-efficient VFD circulation pumps',
-        'Conversion to regenerative media or sand filtration',
-        'Automation modernization with DMX and smart remote controls'
-      ],
-      nodeId: '7:4416',
-      numNodeId: '7:4419',
-      nameNodeId: '7:4421',
-      descNodeId: '7:4422',
-      scopeNodeId: '7:4423',
-    },
-  ];
 
   return (
     <section
@@ -102,40 +33,40 @@ export default function ServicesSection({ onOpenConsultation }) {
               className="font-sans font-semibold text-[#147d8c] text-[11px] tracking-[0.16em]"
               data-node-id="7:4384"
             >
-              03 / WHAT WE DO
+              {t.services.sectionLabel}
             </p>
           </div>
 
           <h2
-            className="font-serif font-normal text-[#102c51] text-[40px] sm:text-[48px] lg:text-[54px] leading-[1.04]"
+            className="font-serif font-normal text-[#102c51] text-[36px] sm:text-[44px] lg:text-[50px] leading-[1.08]"
             data-node-id="7:4385"
           >
-            <span>A complete scope.</span>
+            <span>{t.services.titleLine1}</span>
             <br />
-            <span>A clear responsibility.</span>
+            <span>{t.services.titleLine2}</span>
           </h2>
 
           <p
-            className="font-sans text-[#627581] text-[15px] sm:text-[16px] leading-[1.7]"
+            className="font-sans text-[#627581] text-[15px] sm:text-[16px] leading-[1.8]"
             data-node-id="7:4386"
           >
-            Engage ORA for a single specialist package or bring us into the full water-feature lifecycle.
+            {t.services.desc}
           </p>
 
           <p
             className="font-sans font-medium text-[#21a8b9] text-[12px] tracking-[0.16em] pt-2"
             data-node-id="7:4387"
           >
-            DESIGN • BUILD • OPERATE
+            {t.services.philosophy}
           </p>
 
           <div className="pt-4 hidden lg:block">
             <button
-              onClick={() => onOpenConsultation('Services Section Inquiry')}
+              onClick={() => onOpenConsultation(t.services.customScopeInquiry)}
               className="inline-flex items-center gap-4 text-[13px] font-semibold text-[#102c51] hover:text-[#21a8b9] transition-colors border-b border-[#102c51]/30 pb-1 cursor-pointer"
             >
-              <span>Inquire about custom scopes</span>
-              <span>↗</span>
+              <span>{t.services.customScopeInquiry}</span>
+              <span>{isRTL ? '↖' : '↗'}</span>
             </button>
           </div>
         </div>
@@ -146,51 +77,37 @@ export default function ServicesSection({ onOpenConsultation }) {
           data-node-id="7:4388"
           data-name="Services"
         >
-          {services.map((service, idx) => (
+          {t.services.items.map((service, idx) => (
             <div
               key={service.number}
               className="flex flex-col border-t border-[#d5e1e5] group cursor-pointer transition-colors"
               onMouseEnter={() => setHoveredIdx(idx)}
               onMouseLeave={() => setHoveredIdx(null)}
-              onClick={() => onOpenConsultation(`Service: ${service.name}`)}
-              data-node-id={service.nodeId}
+              onClick={() => onOpenConsultation(`${service.name}`)}
               data-name="Service"
             >
               <div
                 className="flex items-start gap-6 py-7 md:py-[26px] group-hover:bg-white/50 px-2 transition-all rounded-sm"
-                data-node-id="7:4391"
                 data-name="Service content"
               >
                 {/* Number */}
-                <span
-                  className="font-sans text-[#21a8b9] text-[12px] font-normal w-[30px] pt-2 shrink-0"
-                  data-node-id={service.numNodeId}
-                >
+                <span className="font-sans text-[#21a8b9] text-[13px] font-semibold w-[30px] pt-1.5 shrink-0">
                   {service.number}
                 </span>
 
                 {/* Details */}
                 <div className="flex-1 flex flex-col gap-3">
-                  <h3
-                    className="font-serif text-[#102c51] text-[26px] sm:text-[32px] group-hover:text-[#21a8b9] transition-colors leading-[1.1]"
-                    data-node-id={service.nameNodeId}
-                  >
+                  <h3 className="font-serif text-[#102c51] text-[24px] sm:text-[28px] group-hover:text-[#21a8b9] transition-colors leading-[1.2]">
                     {service.name}
                   </h3>
-                  <p
-                    className="font-sans text-[#627581] text-[14px] leading-[1.7]"
-                    data-node-id={service.descNodeId}
-                  >
+                  <p className="font-sans text-[#627581] text-[14px] leading-[1.8]">
                     {service.description}
                   </p>
-                  <p
-                    className="font-sans text-[#21a8b9] text-[9px] font-medium tracking-[0.14em] uppercase"
-                    data-node-id={service.scopeNodeId}
-                  >
+                  <p className="font-sans text-[#21a8b9] text-[10px] font-semibold tracking-[0.12em] uppercase">
                     {service.scope}
                   </p>
 
-                  {/* Smart interactive expanded detail on hover or mobile tap */}
+                  {/* Interactive Details */}
                   {hoveredIdx === idx && (
                     <div className="mt-2 pt-2 border-t border-[#21a8b9]/20 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#475b68] animate-in fade-in duration-200">
                       {service.details.map((d, dIdx) => (
@@ -204,11 +121,8 @@ export default function ServicesSection({ onOpenConsultation }) {
                 </div>
 
                 {/* Arrow */}
-                <span
-                  className="text-[#21a8b9] text-[24px] font-light transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0"
-                  data-node-id="7:4397"
-                >
-                  ↗
+                <span className="text-[#21a8b9] text-[24px] font-light transition-transform group-hover:scale-110 shrink-0">
+                  {isRTL ? '↖' : '↗'}
                 </span>
               </div>
             </div>

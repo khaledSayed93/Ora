@@ -1,53 +1,15 @@
 import React, { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function EngineeringSection() {
+  const { t } = useLanguage();
   const [activeComponent, setActiveComponent] = useState(null);
 
-  const componentDescriptions = {
-    basin: {
-      name: 'Water Feature Basin',
-      desc: 'Engineered skimmer and surge weir geometry calculating turnover rates, depth balancing and edge retention.',
-    },
-    pump: {
-      name: 'Circulation & Impeller Pump',
-      desc: 'Variable Frequency Drive (VFD) motors configured to automatically balance flow rate and power efficiency.',
-    },
-    filtration: {
-      name: 'Filtration Vessel & Media Bed',
-      desc: 'Multi-layer activated glass or high-efficiency sand filtration trapping particles down to 3–5 microns.',
-    },
-    treatment: {
-      name: 'UV Disinfection & Treatment',
-      desc: 'Secondary germicidal UV-C and automatic chemical dosing for crystal-clear, sanitized water.',
-    },
-  };
-
-  const principles = [
-    {
-      title: 'Calculated, not assumed',
-      description: 'Hydraulic sizing, turnover rates, filtration and treatment matched to the feature.',
-      nodeId: '7:4542',
-      titleNodeId: '7:4544',
-      descNodeId: '7:4545',
-    },
-    {
-      title: 'Coordinated before construction',
-      description: 'BIM / MEP coordination, with pump rooms and networks modelled in 3D and clash-checked.',
-      nodeId: '7:4546',
-      titleNodeId: '7:4548',
-      descNodeId: '7:4549',
-    },
-    {
-      title: 'Controlled for the intended effect',
-      description: 'PLC, VFD and DMX systems selected to suit circulation, lighting and water choreography.',
-      nodeId: '7:4550',
-      titleNodeId: '7:4552',
-      descNodeId: '7:4553',
-    },
-  ];
+  const componentData = t.engineering.components;
 
   return (
     <section
+      id="engineering"
       className="w-full bg-[#102c51] px-6 md:px-12 lg:px-[72px] py-16 md:py-[88px]"
       data-node-id="7:4513"
       data-name="Engineering behind the experience"
@@ -69,19 +31,20 @@ export default function EngineeringSection() {
               className="text-[#5ddade] text-[10px] font-semibold tracking-widest"
               data-node-id="7:4516"
             >
-              BELOW THE SURFACE
+              {t.engineering.drawingTitle}
             </span>
             <span
               className="text-[#b9ccd7] text-[9px] tracking-wider"
               data-node-id="7:4517"
             >
-              SYSTEM PRINCIPLE / NOT TO SCALE
+              {t.engineering.drawingSub}
             </span>
           </div>
 
           {/* Interactive Schematic Visual Canvas */}
           <div
             className="relative h-[290px] sm:h-[310px] w-full max-w-[544px] mx-auto overflow-hidden my-4"
+            style={{ direction: 'ltr' }}
             data-node-id="7:4518"
             data-name="Engineering schematic"
           >
@@ -119,7 +82,7 @@ export default function EngineeringSection() {
               style={{ left: '34%', top: '22%' }}
               data-node-id="7:4522"
             >
-              WATER FEATURE
+              {t.engineering.labels.waterFeature}
             </p>
 
             {/* Return Arrow Label */}
@@ -128,7 +91,7 @@ export default function EngineeringSection() {
               style={{ left: '77%', top: '2%' }}
               data-node-id="7:4533"
             >
-              RETURN ↑
+              {t.engineering.labels.return}
             </p>
 
             {/* Circulation Pipe Network SVG */}
@@ -197,40 +160,37 @@ export default function EngineeringSection() {
             {/* Unit Labels */}
             <p
               className="absolute font-sans text-[#b9ccd7] text-[9px] font-semibold tracking-wider"
-              style={{ left: '27%', top: '89%' }}
-              data-node-id="7:4530"
+              style={{ left: '25%', top: '89%' }}
             >
-              CIRCULATION
+              {t.engineering.labels.circulation}
             </p>
             <p
               className="absolute font-sans text-[#b9ccd7] text-[9px] font-semibold tracking-wider"
               style={{ left: '46%', top: '89%' }}
-              data-node-id="7:4531"
             >
-              FILTRATION
+              {t.engineering.labels.filtration}
             </p>
             <p
               className="absolute font-sans text-[#b9ccd7] text-[9px] font-semibold tracking-wider"
               style={{ left: '65%', top: '89%' }}
-              data-node-id="7:4532"
             >
-              TREATMENT
+              {t.engineering.labels.treatment}
             </p>
           </div>
 
           {/* Interactive Info Pill or Caption */}
           <div className="pt-3 border-t border-[#345069]">
-            {activeComponent ? (
+            {activeComponent && componentData[activeComponent] ? (
               <div className="text-xs text-[#5ddade] animate-in fade-in">
-                <span className="font-semibold">{componentDescriptions[activeComponent].name}: </span>
-                <span className="text-[#b9ccd7]">{componentDescriptions[activeComponent].desc}</span>
+                <span className="font-semibold">{componentData[activeComponent].name}: </span>
+                <span className="text-[#b9ccd7]">{componentData[activeComponent].desc}</span>
               </div>
             ) : (
               <p
-                className="font-sans text-[#b9ccd7] text-[11px] leading-[1.6]"
+                className="font-sans text-[#b9ccd7] text-[12px] leading-[1.7]"
                 data-node-id="7:4535"
               >
-                Illustrative circulation principle. Every system is sized and coordinated for its own project.
+                {t.engineering.drawingCaption}
               </p>
             )}
           </div>
@@ -256,44 +216,37 @@ export default function EngineeringSection() {
               className="font-sans font-semibold text-[#5ddade] text-[11px] tracking-[0.16em]"
               data-node-id="7:4539"
             >
-              05 / ENGINEERING FIRST
+              {t.engineering.sectionLabel}
             </p>
           </div>
 
           <h2
-            className="font-serif font-normal text-white text-[40px] sm:text-[48px] lg:text-[57px] leading-[1.04]"
+            className="font-serif font-normal text-white text-[36px] sm:text-[44px] lg:text-[52px] leading-[1.08]"
             data-node-id="7:4540"
           >
-            <span>What you don’t see</span>
+            <span>{t.engineering.titleLine1}</span>
             <br />
-            <span>makes the difference.</span>
+            <span>{t.engineering.titleLine2}</span>
           </h2>
 
           <p
-            className="font-sans text-[#b9ccd7] text-[15px] sm:text-[16px] leading-[1.7]"
+            className="font-sans text-[#b9ccd7] text-[15px] sm:text-[16px] leading-[1.8]"
             data-node-id="7:4541"
           >
-            The visible water is only one part of the design. We bring hydraulics, treatment, controls and coordination into one engineered system.
+            {t.engineering.desc}
           </p>
 
           <div className="flex flex-col gap-6 pt-2">
-            {principles.map((principle) => (
+            {t.engineering.principles.map((principle, idx) => (
               <div
-                key={principle.title}
+                key={idx}
                 className="flex flex-col gap-2 pt-3 border-t border-[#345069]"
-                data-node-id={principle.nodeId}
                 data-name="Engineering principle"
               >
-                <h4
-                  className="font-sans text-white text-[15px] font-medium"
-                  data-node-id={principle.titleNodeId}
-                >
+                <h4 className="font-sans text-white text-[15px] font-semibold">
                   {principle.title}
                 </h4>
-                <p
-                  className="font-sans text-[#b9ccd7] text-[13px] leading-[1.7]"
-                  data-node-id={principle.descNodeId}
-                >
+                <p className="font-sans text-[#b9ccd7] text-[13px] leading-[1.7]">
                   {principle.description}
                 </p>
               </div>

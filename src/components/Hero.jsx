@@ -1,6 +1,9 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function Hero({ onOpenConsultation }) {
+  const { t, isRTL } = useLanguage();
+
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -21,7 +24,7 @@ export default function Hero({ onOpenConsultation }) {
         <img
           src="/assets/architectural-lagoon.png"
           alt="Architectural water landscape by ORA"
-          className="w-full h-full object-cover pointer-events-none scale-105 animate-subtle-zoom transition-transform duration-1000"
+          className="w-full h-full object-cover pointer-events-none scale-105"
         />
       </div>
 
@@ -43,25 +46,25 @@ export default function Hero({ onOpenConsultation }) {
           className="font-sans font-medium text-[#5ddade] text-[12px] tracking-[0.16em] uppercase"
           data-node-id="7:4267"
         >
-          DESIGN • BUILD • OPERATE
+          {t.hero.motto}
         </p>
 
         {/* Editorial Title */}
         <h1
-          className="font-serif font-normal text-white text-[52px] sm:text-[72px] md:text-[88px] lg:text-[98px] leading-[0.98] tracking-[-0.01em]"
+          className="font-serif font-normal text-white text-[48px] sm:text-[68px] md:text-[84px] lg:text-[94px] leading-[1.02] tracking-[-0.01em]"
           data-node-id="7:4268"
         >
-          <span>Water, shaped by</span>
+          <span>{t.hero.titleLine1}</span>
           <br />
-          <span>engineering.</span>
+          <span>{t.hero.titleLine2}</span>
         </h1>
 
         {/* Introduction */}
         <p
-          className="font-sans text-white/95 text-[16px] sm:text-[18px] leading-[1.65] max-w-[530px]"
+          className="font-sans text-white/95 text-[16px] sm:text-[18px] leading-[1.7] max-w-[560px]"
           data-node-id="7:4269"
         >
-          Swimming pools, lagoons and water features. Designed with precision. Built for lasting performance.
+          {t.hero.subtitle}
         </p>
 
         {/* CTA Buttons */}
@@ -72,22 +75,26 @@ export default function Hero({ onOpenConsultation }) {
         >
           <a
             href="#expertise"
-            className="bg-[#21a8b9] hover:bg-[#1ba0b0] text-[#091f39] border border-[#21a8b9] h-[52px] md:h-[54px] px-6 flex items-center gap-6 text-[13px] font-semibold transition-all shadow-md active:scale-[0.99]"
+            className="bg-[#21a8b9] hover:bg-[#1ba0b0] text-[#091f39] border border-[#21a8b9] h-[52px] md:h-[54px] px-6 flex items-center gap-5 text-[13px] font-semibold transition-all shadow-md active:scale-[0.99]"
             data-node-id="7:4271"
             data-name="Consultation action"
           >
-            <span data-node-id="7:4272">Explore our expertise</span>
-            <span className="text-[20px] font-light leading-none" data-node-id="7:4273">↗</span>
+            <span data-node-id="7:4272">{t.hero.exploreExpertise}</span>
+            <span className="text-[20px] font-light leading-none">
+              {isRTL ? '↖' : '↗'}
+            </span>
           </a>
 
           <button
-            onClick={() => onOpenConsultation('Hero Start Conversation')}
-            className="bg-transparent hover:bg-white/10 text-white border border-[#b9ccd7] h-[52px] md:h-[54px] px-6 flex items-center gap-6 text-[13px] font-semibold transition-all active:scale-[0.99] cursor-pointer"
+            onClick={() => onOpenConsultation(t.hero.startConversation)}
+            className="bg-transparent hover:bg-white/10 text-white border border-[#b9ccd7] h-[52px] md:h-[54px] px-6 flex items-center gap-5 text-[13px] font-semibold transition-all active:scale-[0.99] cursor-pointer"
             data-node-id="7:4274"
             data-name="Consultation action"
           >
-            <span data-node-id="7:4275">Start a conversation</span>
-            <span className="text-[20px] font-light leading-none" data-node-id="7:4276">↗</span>
+            <span data-node-id="7:4275">{t.hero.startConversation}</span>
+            <span className="text-[20px] font-light leading-none">
+              {isRTL ? '↖' : '↗'}
+            </span>
           </button>
         </div>
       </div>
@@ -99,19 +106,19 @@ export default function Hero({ onOpenConsultation }) {
         data-name="Hero footnotes"
       >
         <div
-          className="flex items-center gap-5 sm:gap-6 text-white/90 font-medium tracking-[0.14em]"
+          className="flex items-center gap-4 sm:gap-6 text-white/90 font-medium tracking-[0.14em]"
           data-node-id="7:4278"
           data-name="Sectors"
         >
-          <span data-node-id="7:4279">RESIDENTIAL</span>
+          <span data-node-id="7:4279">{t.hero.sectors.residential}</span>
           <span className="opacity-40">·</span>
-          <span data-node-id="7:4280">HOSPITALITY</span>
+          <span data-node-id="7:4280">{t.hero.sectors.hospitality}</span>
           <span className="opacity-40">·</span>
-          <span data-node-id="7:4281">COMMERCIAL</span>
+          <span data-node-id="7:4281">{t.hero.sectors.commercial}</span>
         </div>
 
         <p className="text-white/70 text-[10px]" data-node-id="7:4282">
-          Architectural imagery for illustration
+          {t.hero.imageryNote}
         </p>
 
         <button
@@ -119,7 +126,7 @@ export default function Hero({ onOpenConsultation }) {
           className="group flex items-center gap-1.5 text-white/90 hover:text-[#5ddade] text-[11px] tracking-wider transition-colors cursor-pointer"
           data-node-id="7:4283"
         >
-          <span>DISCOVER ORA</span>
+          <span>{t.hero.discoverOra}</span>
           <span className="transition-transform group-hover:translate-y-0.5">↓</span>
         </button>
       </div>

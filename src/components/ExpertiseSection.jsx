@@ -1,71 +1,14 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function ExpertiseSection({ onSelectExpertise }) {
-  const capabilities = [
-    {
-      number: '01',
-      name: 'Swimming pools',
-      image: '/assets/capability-swimming-pools.png',
-      description: 'Private, leisure and competition pools, up to Olympic size.',
-      nodeId: '7:4344',
-      nameNodeId: '7:4347',
-      numNodeId: '7:4348',
-      descNodeId: '7:4349',
-    },
-    {
-      number: '02',
-      name: 'Lagoons',
-      image: '/assets/capability-lagoons.png',
-      description: 'Swimmable and landscape lagoons with sand or regenerative media filtration.',
-      nodeId: '7:4350',
-      nameNodeId: '7:4353',
-      numNodeId: '7:4354',
-      descNodeId: '7:4355',
-    },
-    {
-      number: '03',
-      name: 'Fountains',
-      image: '/assets/capability-fountains.png',
-      description: 'Classic jets, musical and dancing fountains with DMX choreography.',
-      nodeId: '7:4356',
-      nameNodeId: '7:4359',
-      numNodeId: '7:4360',
-      descNodeId: '7:4361',
-    },
-    {
-      number: '04',
-      name: 'Aqua parks',
-      image: '/assets/capability-aqua-parks.png',
-      description: 'Water slides, leisure pools, lazy rivers and aquatic attractions.',
-      nodeId: '7:4362',
-      nameNodeId: '7:4365',
-      numNodeId: '7:4366',
-      descNodeId: '7:4367',
-    },
-  ];
+  const { t } = useLanguage();
 
-  const specialistCapabilities = [
-    {
-      title: 'Waterfalls & water walls',
-      description: 'Natural cascades, sheer descents and architectural feature walls.',
-      nodeId: '7:4371',
-      titleNodeId: '7:4372',
-      descNodeId: '7:4373',
-    },
-    {
-      title: 'Spas, jacuzzis & therapy pools',
-      description: 'Hydrotherapy, air and water jets, heating and treatment.',
-      nodeId: '7:4374',
-      titleNodeId: '7:4375',
-      descNodeId: '7:4376',
-    },
-    {
-      title: 'Water treatment systems',
-      description: 'Filtration, ozone, UV, chemical dosing and automatic controls.',
-      nodeId: '7:4377',
-      titleNodeId: '7:4378',
-      descNodeId: '7:4379',
-    },
+  const capabilityImages = [
+    '/assets/capability-swimming-pools.png',
+    '/assets/capability-lagoons.png',
+    '/assets/capability-fountains.png',
+    '/assets/capability-aqua-parks.png',
   ];
 
   return (
@@ -100,28 +43,28 @@ export default function ExpertiseSection({ onSelectExpertise }) {
               className="font-sans font-semibold text-[#147d8c] text-[11px] tracking-[0.16em]"
               data-node-id="7:4339"
             >
-              02 / OUR EXPERTISE
+              {t.expertise.sectionLabel}
             </p>
           </div>
 
           <h2
-            className="font-serif font-normal text-[#102c51] text-[40px] sm:text-[50px] lg:text-[62px] leading-[1.04]"
+            className="font-serif font-normal text-[#102c51] text-[36px] sm:text-[46px] lg:text-[58px] leading-[1.06]"
             data-node-id="7:4340"
           >
-            Water in every form.
+            {t.expertise.title}
           </h2>
         </div>
 
         <div
-          className="max-w-[380px]"
+          className="max-w-[420px]"
           data-node-id="7:4341"
           data-name="Expertise summary"
         >
           <p
-            className="font-sans text-[#627581] text-[15px] sm:text-[16px] leading-[1.7]"
+            className="font-sans text-[#627581] text-[15px] sm:text-[16px] leading-[1.8]"
             data-node-id="7:4342"
           >
-            From a private pool to a landscape-scale lagoon. One specialist discipline, many expressions.
+            {t.expertise.summary}
           </p>
         </div>
       </div>
@@ -132,12 +75,11 @@ export default function ExpertiseSection({ onSelectExpertise }) {
         data-node-id="7:4343"
         data-name="Primary expertise"
       >
-        {capabilities.map((item) => (
+        {t.expertise.capabilities.map((item, idx) => (
           <div
-            key={item.name}
+            key={item.number}
             className="flex flex-col gap-4 group cursor-pointer"
             onClick={() => onSelectExpertise && onSelectExpertise(item.name)}
-            data-node-id={item.nodeId}
             data-name="Expertise area"
           >
             {/* Image Frame */}
@@ -146,7 +88,7 @@ export default function ExpertiseSection({ onSelectExpertise }) {
               data-node-id="7:4345"
             >
               <img
-                src={item.image}
+                src={capabilityImages[idx]}
                 alt={item.name}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
@@ -159,25 +101,16 @@ export default function ExpertiseSection({ onSelectExpertise }) {
               data-node-id="7:4346"
               data-name="Capability heading"
             >
-              <h3
-                className="font-serif text-[#102c51] text-[26px] sm:text-[31px] group-hover:text-[#21a8b9] transition-colors"
-                data-node-id={item.nameNodeId}
-              >
+              <h3 className="font-serif text-[#102c51] text-[24px] sm:text-[28px] group-hover:text-[#21a8b9] transition-colors">
                 {item.name}
               </h3>
-              <span
-                className="font-sans text-[#21a8b9] text-[11px] font-medium"
-                data-node-id={item.numNodeId}
-              >
+              <span className="font-sans text-[#21a8b9] text-[12px] font-semibold">
                 {item.number}
               </span>
             </div>
 
             {/* Description */}
-            <p
-              className="font-sans text-[#627581] text-[14px] leading-[1.7]"
-              data-node-id={item.descNodeId}
-            >
+            <p className="font-sans text-[#627581] text-[14px] leading-[1.8]">
               {item.description}
             </p>
           </div>
@@ -186,10 +119,10 @@ export default function ExpertiseSection({ onSelectExpertise }) {
 
       {/* Footnote Disclosure */}
       <p
-        className="font-sans text-[#627581] text-[10px] tracking-wide"
+        className="font-sans text-[#627581] text-[11px] tracking-wide"
         data-node-id="7:4368"
       >
-        Capability imagery is illustrative.
+        {t.expertise.disclosure}
       </p>
 
       {/* Divider */}
@@ -205,23 +138,16 @@ export default function ExpertiseSection({ onSelectExpertise }) {
         data-node-id="7:4370"
         data-name="Specialist capabilities"
       >
-        {specialistCapabilities.map((item) => (
+        {t.expertise.specialists.map((item, idx) => (
           <div
-            key={item.title}
+            key={idx}
             className="flex flex-col gap-3 group"
-            data-node-id={item.nodeId}
             data-name="Additional expertise"
           >
-            <h4
-              className="font-sans font-medium text-[#102c51] text-[17px] group-hover:text-[#21a8b9] transition-colors"
-              data-node-id={item.titleNodeId}
-            >
+            <h4 className="font-sans font-semibold text-[#102c51] text-[17px] group-hover:text-[#21a8b9] transition-colors">
               {item.title}
             </h4>
-            <p
-              className="font-sans text-[#627581] text-[14px] leading-[1.7]"
-              data-node-id={item.descNodeId}
-            >
+            <p className="font-sans text-[#627581] text-[14px] leading-[1.8]">
               {item.description}
             </p>
           </div>

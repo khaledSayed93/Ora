@@ -1,16 +1,19 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function Footer({ onOpenSplash }) {
+  const { t } = useLanguage();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const footerLinks = [
-    { name: 'About ORA', href: '#about', nodeId: '7:4736' },
-    { name: 'Expertise', href: '#expertise', nodeId: '7:4737' },
-    { name: 'Services', href: '#services', nodeId: '7:4738' },
-    { name: 'Experience', href: '#experience', nodeId: '7:4739' },
-    { name: 'Contact', href: '#contact', nodeId: '7:4740' },
+    { name: t.nav.about, href: '#about', nodeId: '7:4736' },
+    { name: t.nav.expertise, href: '#expertise', nodeId: '7:4737' },
+    { name: t.nav.services, href: '#services', nodeId: '7:4738' },
+    { name: t.nav.experience, href: '#experience', nodeId: '7:4739' },
+    { name: t.nav.process, href: '#process', nodeId: '7:4740' },
   ];
 
   return (
@@ -45,10 +48,10 @@ export default function Footer({ onOpenSplash }) {
           {onOpenSplash && (
             <button
               onClick={onOpenSplash}
-              className="text-[10px] text-[#b9ccd7]/60 hover:text-[#5ddade] transition-colors border border-[#345069] px-2 py-1 rounded"
+              className="text-[11px] text-[#b9ccd7]/60 hover:text-[#5ddade] transition-colors border border-[#345069] px-2.5 py-1 rounded"
               title="View brand splash entrance"
             >
-              Splash screen
+              {t.footer.splashBtn}
             </button>
           )}
         </div>
@@ -58,12 +61,12 @@ export default function Footer({ onOpenSplash }) {
           className="font-sans font-medium text-[#5ddade] text-[11px] tracking-[0.16em]"
           data-node-id="7:4734"
         >
-          DESIGN • BUILD • OPERATE
+          {t.hero.motto}
         </p>
 
         {/* Links */}
         <div
-          className="flex flex-wrap items-center gap-6 md:gap-[28px] font-sans text-[#b9ccd7] text-[12px]"
+          className="flex flex-wrap items-center gap-6 md:gap-[28px] font-sans text-[#b9ccd7] text-[13px]"
           data-node-id="7:4735"
           data-name="Footer links"
         >
@@ -82,16 +85,16 @@ export default function Footer({ onOpenSplash }) {
 
       {/* Legal & Back To Top */}
       <div
-        className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 font-sans text-[10px] text-[#b9ccd7]"
+        className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 font-sans text-[11px] text-[#b9ccd7]"
         data-node-id="7:4741"
         data-name="Legal and regional note"
       >
         <p data-node-id="7:4742">
-          © 2026 ORA Water Features. All rights reserved.
+          {t.footer.rights}
         </p>
 
         <p data-node-id="7:4743">
-          Founding-team experience in Egypt · Saudi Arabia · UAE
+          {t.footer.regions}
         </p>
 
         <button
@@ -99,7 +102,7 @@ export default function Footer({ onOpenSplash }) {
           className="text-[#5ddade] hover:text-white transition-colors cursor-pointer tracking-wider font-medium"
           data-node-id="7:4744"
         >
-          BACK TO TOP ↑
+          {t.footer.backToTop}
         </button>
       </div>
     </footer>

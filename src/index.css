@@ -3,6 +3,7 @@
 @theme {
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-arabic: "Cairo", system-ui, -apple-system, sans-serif;
   
   --color-ora-navy: #102c51;
   --color-ora-dark: #091f39;
@@ -18,16 +19,27 @@
 }
 
 body {
-  font-family: var(--font-sans);
   color: #102c51;
   background-color: #ffffff;
   overflow-x: hidden;
 }
 
-.font-serif {
-  font-family: var(--font-serif);
+html[dir="rtl"] body,
+html[dir="rtl"] .font-sans {
+  font-family: var(--font-arabic);
 }
 
-.font-sans {
+html[dir="ltr"] body,
+html[dir="ltr"] .font-sans {
   font-family: var(--font-sans);
+}
+
+html[dir="rtl"] .font-serif {
+  font-family: var(--font-arabic);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+html[dir="ltr"] .font-serif {
+  font-family: var(--font-serif);
 }

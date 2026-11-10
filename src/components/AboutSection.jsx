@@ -1,23 +1,8 @@
 import React from 'react';
+import { useLanguage } from '../context/LanguageContext.jsx';
 
 export default function AboutSection() {
-  const pillars = [
-    {
-      number: '01',
-      title: 'One Responsible Partner',
-      description: 'Design, supply, installation and commissioning under a single scope. Clear ownership at every stage.',
-    },
-    {
-      number: '02',
-      title: 'Engineering-Led',
-      description: 'Hydraulics, filtration and treatment designed around the real demands of each project.',
-    },
-    {
-      number: '03',
-      title: 'Long-Term Support',
-      description: 'Operation and maintenance that keeps systems performing long after handover.',
-    },
-  ];
+  const { t } = useLanguage();
 
   return (
     <section
@@ -52,37 +37,37 @@ export default function AboutSection() {
               className="font-sans font-semibold text-[#147d8c] text-[11px] tracking-[0.16em]"
               data-node-id="7:4289"
             >
-              01 / ABOUT ORA
+              {t.about.sectionLabel}
             </p>
           </div>
 
           <h2
-            className="font-serif font-normal text-[#102c51] text-[40px] sm:text-[50px] lg:text-[62px] leading-[1.04]"
+            className="font-serif font-normal text-[#102c51] text-[36px] sm:text-[46px] lg:text-[58px] leading-[1.06]"
             data-node-id="7:4290"
           >
-            <span>One partner.</span>
+            <span>{t.about.titleLine1}</span>
             <br />
-            <span>Every dimension of water.</span>
+            <span>{t.about.titleLine2}</span>
           </h2>
         </div>
 
         {/* Right Column: Narrative paragraphs */}
         <div
-          className="lg:col-span-6 flex flex-col gap-5 pt-0 lg:pt-10 text-[#627581] font-sans"
+          className="lg:col-span-6 flex flex-col gap-5 pt-0 lg:pt-8 text-[#627581] font-sans"
           data-node-id="7:4291"
           data-name="Company description"
         >
           <p
-            className="text-[17px] md:text-[19px] leading-[1.7] text-[#475b68] font-normal"
+            className="text-[16px] md:text-[18px] leading-[1.8] text-[#475b68] font-normal"
             data-node-id="7:4292"
           >
-            ORA Water Features brings specialist design, construction and operation together for residential, hospitality and commercial developments.
+            {t.about.desc1}
           </p>
           <p
-            className="text-[15px] md:text-[16px] leading-[1.7]"
+            className="text-[14px] md:text-[16px] leading-[1.8]"
             data-node-id="7:4293"
           >
-            We work alongside developers, consultants and architects — connecting the first concept to the systems, coordination and care that make it work.
+            {t.about.desc2}
           </p>
         </div>
       </div>
@@ -100,7 +85,7 @@ export default function AboutSection() {
         data-node-id="7:4295"
         data-name="Our three pillars"
       >
-        {pillars.map((pillar, idx) => (
+        {t.about.pillars.map((pillar, idx) => (
           <div
             key={pillar.number}
             className="flex items-start gap-5 group"
@@ -108,7 +93,7 @@ export default function AboutSection() {
             data-name="Company pillar"
           >
             <span
-              className="font-sans text-[#21a8b9] text-[12px] font-semibold pt-1 shrink-0"
+              className="font-sans text-[#21a8b9] text-[13px] font-semibold pt-1 shrink-0"
               data-node-id={idx === 0 ? "7:4297" : idx === 1 ? "7:4302" : "7:4307"}
             >
               {pillar.number}
@@ -119,13 +104,13 @@ export default function AboutSection() {
               data-name="Pillar content"
             >
               <h3
-                className="font-sans font-medium text-[#102c51] text-[18px] group-hover:text-[#21a8b9] transition-colors"
+                className="font-sans font-semibold text-[#102c51] text-[18px] group-hover:text-[#21a8b9] transition-colors"
                 data-node-id={idx === 0 ? "7:4299" : idx === 1 ? "7:4304" : "7:4309"}
               >
                 {pillar.title}
               </h3>
               <p
-                className="font-sans text-[#627581] text-[14px] leading-[1.7]"
+                className="font-sans text-[#627581] text-[14px] leading-[1.8]"
                 data-node-id={idx === 0 ? "7:4300" : idx === 1 ? "7:4305" : "7:4310"}
               >
                 {pillar.description}

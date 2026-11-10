@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
 import AboutSection from './components/AboutSection.jsx';
@@ -16,18 +17,18 @@ import ConsultationModal from './components/ConsultationModal.jsx';
 import ProjectModal from './components/ProjectModal.jsx';
 import SplashScreen from './components/SplashScreen.jsx';
 
-export default function App() {
+function MainLayout() {
   const [showSplash, setShowSplash] = useState(false);
   const [consultationModal, setConsultationModal] = useState({
     isOpen: false,
-    title: 'General Inquiry',
+    title: '',
   });
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const handleOpenConsultation = (title = 'General Consultation') => {
+  const handleOpenConsultation = (title = '') => {
     setConsultationModal({
       isOpen: true,
-      title,
+      title: title || 'General Consultation',
     });
   };
 
@@ -61,7 +62,7 @@ export default function App() {
 
         {/* 02 / OUR EXPERTISE */}
         <ExpertiseSection
-          onSelectExpertise={(name) => handleOpenConsultation(`Inquire about: ${name}`)}
+          onSelectExpertise={(name) => handleOpenConsultation(name)}
         />
 
         {/* 03 / WHAT WE DO */}
@@ -106,5 +107,13 @@ export default function App() {
         onConsult={handleOpenConsultation}
       />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <MainLayout />
+    </LanguageProvider>
   );
 }
